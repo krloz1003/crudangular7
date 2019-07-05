@@ -32,6 +32,7 @@ businessRoutes.route('/').get(function (req, res) {
 // Defined edit route
 businessRoutes.route('/edit/:id').get(function (req, res) {
   let id = req.params.id;
+  console.log(id);
   Business.findById(id, function (err, business){
       res.json(business);
   });
@@ -39,8 +40,8 @@ businessRoutes.route('/edit/:id').get(function (req, res) {
 
 //  Defined update route
 businessRoutes.route('/update/:id').post(function (req, res) {
-    Business.findById(req.params.id, function(err, next, business) {
-    if (!business)
+    Business.findById(req.params.id, function(err, business) {    
+      if (!business)
       return next(new Error('Could not load Document'));
     else {
         business.person_name = req.body.person_name;
