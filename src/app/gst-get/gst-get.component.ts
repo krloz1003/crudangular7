@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import Business from '../Business';
 import { BusinessService } from '../business.service';
+import { Subscriber } from 'rxjs';
 
 @Component({
   selector: 'app-gst-get',
@@ -12,6 +13,12 @@ export class GstGetComponent implements OnInit {
 businesses: Business[];
 
   constructor(private bs: BusinessService) { }
+
+  deleteBusiness(id){
+    this.bs.deleteBusiness(id).subscribe(res => {
+      console.log('Deleted');
+    })
+  }
 
   ngOnInit() {
     this.bs

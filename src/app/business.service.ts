@@ -44,4 +44,10 @@ export class BusinessService {
       .subscribe(res => console.log('Done'));
   }
 
+  deleteBusiness(id){
+    return this
+            .http
+            .get(`${this.uri}/delete/${id}`);
+  }
+
 }
